@@ -2,18 +2,14 @@
   <div id="app">
     <h1>Mine mine mine</h1>
     <p>Mined: {{ mined }}</p>
-    <p>State: {{ state }}</p>
-    <div class="pickaxe">
-      <coin v-for="coin in coins"/>
-    </div>
-    <button @click="showCoolCoin">Show cool coin</button>
+    <coins :count="mined"/>
   </div>
 </template>
 
 <script>
 import GyroNorm from 'gyronorm/dist/gyronorm.complete.min.js'
 import { Howl } from 'howler'
-import Coin from './components/Coin.vue'
+import Coins from './components/Coins.vue'
 
 const STATES = {
   IDLE: 0,
@@ -28,9 +24,8 @@ const MINING_SOUND_URLS = [
 const MINING_INTERVAL = 200
 
 export default {
-
   components: {
-    'coin': Coin
+    Coins
   },
 
   data () {
@@ -101,15 +96,13 @@ export default {
           this.state = STATES.IDLE
         }
       }
-    },
-    showCoolCoin () {
-      this.coins.push(1)
-      setTimeout(() => { this.coins.pop() }, 5000)
     }
   }
 }
 </script>
 
 <style>
-
+* {
+  color: white;
+}
 </style>
