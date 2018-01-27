@@ -2,6 +2,7 @@
   <div id="app">
     <h1>Mine mine mine</h1>
     <p>Mined: {{ mined }}</p>
+    <button @click="mined++">mine</button>
     <coins :count="mined"/>
   </div>
 </template>

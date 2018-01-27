@@ -41,7 +41,7 @@ export default {
             strokeStyle: '#ffffff',
             sprite: {
               texture:
-                '//cdn.rawgit.com/liabru/matter-js/2560a681/demo/img/ball.png'
+                '../../static/img/coin.png'
             }
           }
         })
