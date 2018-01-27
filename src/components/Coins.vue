@@ -1,5 +1,7 @@
 <template>
-  <div class="container" ref="container"></div>
+  <div class="container" ref="container">
+    <img src="../../static/img/logo.png" />
+  </div>
 </template>
 
 <script>
@@ -70,6 +72,7 @@ export default {
         options: {
           width: _sceneWidth,
           height: _sceneHeight,
+          background: '#8e94e4',
           showAngleIndicator: false,
           wireframes: false
         }
@@ -212,4 +215,13 @@ export default {
   height: 100vh;
   z-index: -100;
 }
+
+img {
+  max-width:100%;
+  max-height:100%;
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  margin:auto;
+}
+
 </style>

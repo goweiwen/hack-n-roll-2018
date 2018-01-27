@@ -104,6 +104,7 @@ export default {
 
 <style>
 * {
-  color: white;
+  color: black;
+  font-family: Helvetica;
 }
 </style>
