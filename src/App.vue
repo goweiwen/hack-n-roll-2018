@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <h1>Mine mine mine</h1>
-    <p>Mined: {{ mined }}</p>
-    <button @click="mined++">mine</button>
+    <div class="flex-grid">
+      <h1 class="col center animated bounceInDown">Swing to Mine!</h1>
+      <div class="col" />
+      <h1 class="col center animated bounceInDown">Mined: {{ mined }}</h1>
+    </div>
+    <button @click="onMine">mine</button>
     <coins :count="mined"/>
   </div>
 </template>
@@ -32,7 +35,6 @@ export default {
   data () {
     return {
       audio: null,
-      coins: [],
       lastMined: 0,
       mined: 0,
       state: STATES.IDLE,
@@ -97,7 +99,12 @@ export default {
           this.state = STATES.IDLE
         }
       }
+    },
+
+    onMine () {
+      this.mined++
     }
+
   }
 }
 </script>
@@ -106,5 +113,16 @@ export default {
 * {
   color: black;
   font-family: Helvetica;
+}
+
+.flex-grid {
+  display: flex;
+}
+.col {
+  flex: 1;
+}
+
+.center {
+  text-align: center;
 }
 </style>

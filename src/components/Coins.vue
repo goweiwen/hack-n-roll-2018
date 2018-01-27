@@ -1,6 +1,6 @@
 <template>
   <div class="container" ref="container">
-    <img src="../../static/img/logo.png" />
+    <img class="animated bounceInDown" src="../../static/img/logo.png" />
   </div>
 </template>
 
