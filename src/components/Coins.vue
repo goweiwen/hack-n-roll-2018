@@ -42,8 +42,7 @@ export default {
           render: {
             strokeStyle: '#ffffff',
             sprite: {
-              texture:
-                '../../static/img/coin.png'
+              texture: '../../static/img/coin.png'
             }
           }
         })
@@ -164,7 +163,8 @@ export default {
       World.addBody(
         _world,
         Bodies.rectangle(_sceneWidth * 0.5, -offset, _sceneWidth + 0.5, 50.5, {
-          isStatic: true
+          isStatic: true,
+          render: { fillStyle: 'transparent' }
         })
       )
       World.addBody(
@@ -174,7 +174,7 @@ export default {
           _sceneHeight + offset,
           _sceneWidth + 0.5,
           50.5,
-          { isStatic: true }
+          { isStatic: true, render: { fillStyle: 'transparent' } }
         )
       )
       World.addBody(
@@ -184,7 +184,7 @@ export default {
           _sceneHeight * 0.5,
           50.5,
           _sceneHeight + 0.5,
-          { isStatic: true }
+          { isStatic: true, render: { fillStyle: 'transparent' } }
         )
       )
       World.addBody(
@@ -194,7 +194,7 @@ export default {
           _sceneHeight * 0.5,
           50.5,
           _sceneHeight + 0.5,
-          { isStatic: true }
+          { isStatic: true, render: { fillStyle: 'transparent' } }
         )
       )
     }
@@ -217,11 +217,13 @@ export default {
 }
 
 img {
-  max-width:100%;
-  max-height:100%;
-  position:absolute;
-  top:0; left:0; right:0; bottom:0;
-  margin:auto;
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
-
 </style>
