@@ -2561,6 +2561,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
+gyronorm@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/gyronorm/-/gyronorm-2.0.6.tgz#c3dbcaa0109087fea75378f78538befdcd53cee2"
+
 gzip-size@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-3.0.0.tgz#546188e9bdc337f673772f81660464b389dce520"
