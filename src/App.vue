@@ -1,32 +1,31 @@
 <template>
   <div id="app">
-    <audio ref="audio">
-      <source src="/static/audio/mining.m4a" type="audio/m4a">
-      <source src="/static/audio/mining.ogg" type="audio/ogg">
-      <source src="/static/audio/mining.wav" type="audio/wav">
-    </audio>
     <h1>Mine mine mine</h1>
     <p>Mined: {{ mined }}</p>
-    <p>State: {{ state === 0 ? 'idle' : state === 1 ? 'downswing' : state === 2 ? 'mining' : 'upswing' }}</p>
-    <p>{{ data }}</p>
+    <p>State: {{ state }}</p>
   </div>
 </template>
 
 <script>
 import GyroNorm from 'gyronorm/dist/gyronorm.complete.min.js'
+import { Howl } from 'howler'
 
 const STATES = {
   IDLE: 0,
   DOWNSWING: 1,
-  MINING: 2,
-  UPSWING: 3
+  UPSWING: 2
 }
 
-const MINING_INTERVAL = 1000
+const MINING_SOUND_URLS = [
+  '/static/audio/mining.wav',
+  '/static/audio/mining.ogg'
+]
+const MINING_INTERVAL = 200
 
 export default {
   data () {
     return {
+      audio: null,
       lastMined: 0,
       mined: 0,
       state: STATES.IDLE,
@@ -56,9 +55,19 @@ export default {
   computed: {},
 
   async created () {
-    const gn = new GyroNorm()
-    await gn.init()
-    gn.start(this.onDeviceMotion.bind(this))
+    try {
+      this.audio = new Howl({ src: MINING_SOUND_URLS })
+    } catch (e) {
+      console.log(e)
+    }
+
+    try {
+      const gn = new GyroNorm()
+      await gn.init()
+      gn.start(this.onDeviceMotion.bind(this))
+    } catch (e) {
+      console.log(e)
+    }
   },
 
   methods: {
@@ -66,16 +75,13 @@ export default {
       this.data = data
 
       if (this.state === STATES.IDLE) {
-        if (Date.now() - this.lastMined > MINING_INTERVAL && data.dm.z > 2) {
+        if (Date.now() - this.lastMined > MINING_INTERVAL && data.dm.z > 3) {
+          this.lastMined = Date.now()
+          this.audio.play()
+          this.mined++
           this.state = STATES.DOWNSWING
-          this.$refs.audio.play()
         }
       } else if (this.state === STATES.DOWNSWING) {
-        if (data.dm.z < 0) {
-          this.mined++
-          this.state = STATES.MINING
-        }
-      } else if (this.state === STATES.MINING) {
         if (data.dm.z < -1) {
           this.state = STATES.UPSWING
         }
