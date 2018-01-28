@@ -10,7 +10,6 @@ import {
   Render,
   World,
   Bodies,
-  Body,
   Common,
   MouseConstraint
 } from 'matter-js'
