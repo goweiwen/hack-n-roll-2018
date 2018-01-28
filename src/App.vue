@@ -112,6 +112,7 @@ export default {
 * {
   color: black;
   font-family: 'Proxima Soft';
+  text-shadow: 0 0 10px grey;
 }
 
 .flex-grid {
