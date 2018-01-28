@@ -86,6 +86,9 @@ export default {
         if (Date.now() - this.lastMined > MINING_INTERVAL && data.dm.x > 3) {
           this.lastMined = Date.now()
           this.audio.play()
+          if (window.navigator) {
+            window.navigator.vibrate(200)
+          }
           this.mined++
           this.state = STATES.DOWNSWING
         }
