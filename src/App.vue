@@ -24,7 +24,7 @@ const MINING_SOUND_URLS = [
   '/static/audio/mining.wav',
   '/static/audio/mining.ogg'
 ]
-const MINING_INTERVAL = 200
+const MINING_INTERVAL = 500
 
 export default {
   components: {
