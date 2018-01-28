@@ -5,7 +5,6 @@
       <div class="col" />
       <h1 class="col center animated bounceInDown">Mined: {{ mined }}</h1>
     </div>
-    <button @click="onMine">mine</button>
     <coins :count="mined"/>
   </div>
 </template>
@@ -99,10 +98,6 @@ export default {
           this.state = STATES.IDLE
         }
       }
-    },
-
-    onMine () {
-      this.mined++
     }
   }
 }
