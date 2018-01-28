@@ -84,18 +84,18 @@ export default {
       this.data = data
 
       if (this.state === STATES.IDLE) {
-        if (Date.now() - this.lastMined > MINING_INTERVAL && data.dm.z > 3) {
+        if (Date.now() - this.lastMined > MINING_INTERVAL && data.dm.x > 3) {
           this.lastMined = Date.now()
           this.audio.play()
           this.mined++
           this.state = STATES.DOWNSWING
         }
       } else if (this.state === STATES.DOWNSWING) {
-        if (data.dm.z < -1) {
+        if (data.dm.x < -1) {
           this.state = STATES.UPSWING
         }
       } else if (this.state === STATES.UPSWING) {
-        if (data.dm.z > 0) {
+        if (data.dm.x > 0) {
           this.state = STATES.IDLE
         }
       }
@@ -104,7 +104,6 @@ export default {
     onMine () {
       this.mined++
     }
-
   }
 }
 </script>
