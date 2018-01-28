@@ -10,6 +10,7 @@ import {
   Render,
   World,
   Bodies,
+  Body,
   Common,
   MouseConstraint
 } from 'matter-js'
@@ -34,19 +35,17 @@ export default {
 
   methods: {
     addCoin (x, y) {
-      World.add(
-        this.engine.world,
-        Bodies.circle(x, y, 46, {
-          friction: 0.01,
-          restitution: 0.4,
-          render: {
-            strokeStyle: '#ffffff',
-            sprite: {
-              texture: '../../static/img/coin.png'
-            }
+      const circle = Bodies.polygon(x, y, 8, 46, {
+        density: 100,
+        friction: 100,
+        restitution: 0,
+        render: {
+          sprite: {
+            texture: '../../static/img/coin.png'
           }
-        })
-      )
+        }
+      })
+      World.add(this.engine.world, circle)
     }
   },
 
@@ -69,6 +68,7 @@ export default {
         element: canvasContainer,
         engine: _engine,
         options: {
+          pixelRatio: 0.1,
           width: _sceneWidth,
           height: _sceneHeight,
           background: '#8e94e4',
