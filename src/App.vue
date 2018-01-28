@@ -109,9 +109,14 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'Proxima Soft';
+  src: url('/static/fonts/ProximaNovaSoft-Regular.otf') format('opentype');
+}
+
 * {
   color: black;
-  font-family: Helvetica;
+  font-family: 'Proxima Soft';
 }
 
 .flex-grid {
